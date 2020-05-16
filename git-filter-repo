@@ -2034,7 +2034,6 @@ EXAMPLES
     # PERF: remove these checks once new enough git versions are common
     p = subproc.Popen('git fast-export -h'.split(),
                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    p.wait()
     output = p.stdout.read()
     if b'--mark-tags' not in output: # pragma: no cover
       global write_marks
@@ -2055,7 +2054,6 @@ EXAMPLES
       # diff-tree --combined-all-paths, which is even more important...
       p = subproc.Popen('git diff-tree -h'.split(),
                         stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-      p.wait()
       output = p.stdout.read()
       if b'--combined-all-paths' not in output:
         raise SystemExit(_("Error: need a version of git whose diff-tree "
